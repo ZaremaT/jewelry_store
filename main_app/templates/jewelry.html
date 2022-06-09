@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}{{j.name}}{% endblock %}
 
 {% block content %}
+
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
 {% else %}
@@ -10,6 +11,8 @@
   <a href="{% url 'login' %}">Log In</a>
 {% endif %}
 
-{{ jewelry.name }}
+<h2>{{ j.name }}</h2>
+<h3>{{ j.description }}</h3>
+<img src ="{{ j.img }}" alt="{{ j.name }}" />
 
 {% endblock %}
