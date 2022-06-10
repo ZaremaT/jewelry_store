@@ -5,14 +5,24 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
+Hi {{ user.username }}!
 {% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">Log In</a>
 {% endif %}
 
 <h2>{{ j.name }}</h2>
+<h2>${{j.price}}</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <div class="buttons add-to-cart">
+    <button class="button add-to-cart" name="add-to-cart" value="Add To Cart">Add To Cart</button>
+  </div>
+</form>
+
 <h3>{{ j.description }}</h3>
-<img src ="{{ j.img }}" alt="{{ j.name }}" />
+<img src="{{ j.img }}" alt="{{ j.name }}" />
+
 
 {% endblock %}

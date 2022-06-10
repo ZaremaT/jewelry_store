@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+
+<h1>Cart</h1>
+
+{% for i in items %}
+<h3>{{i.name}}</h3>
+<a href="a/{{i.id}}">
+<img src ="{{i.img}}" alt="{{i.name}}" />
+</a>
+{% endfor %}
+
+{% endblock %}

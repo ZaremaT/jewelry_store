@@ -18,3 +18,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class Cart(models.Model):
+    username = models.CharField(max_length=100, primary_key=True)
+    item_id = models.CharField(max_length=250, primary_key=True)
+    quantity = models.IntegerField(default=1)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    
+    def __str__(self):
+        return self.username + ', ' + self.username
