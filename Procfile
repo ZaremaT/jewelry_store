@@ -1,0 +1,1 @@
+web: gunicorn antares_capstone.wsgi
