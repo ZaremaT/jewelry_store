@@ -14,9 +14,10 @@
 <h1>Cart</h1>
 
 {% for i in items %}
-<h3>{{i.name}}</h3>
-<a href="a/{{i.id}}">
-<img src ="{{i.img}}" alt="{{i.name}}" />
+<h3>{{i.item.name}}</h3>
+<h2>Quantity: {{i.quantity}}</h2>
+<a href="/a/{{i.item.id}}">
+<img src ="{{i.item.img}}" alt="{{i.item.name}}" />
 </a>
 {% endfor %}
 

@@ -19,8 +19,8 @@ class Category(models.Model):
         return self.name
 
 class Cart(models.Model):
-    username = models.CharField(max_length=100, primary_key=True)
-    item_id = models.CharField(max_length=250, primary_key=True)
+    username = models.CharField(max_length=100)
+    item_id = models.CharField(max_length=250)
     quantity = models.IntegerField(default=1)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     
