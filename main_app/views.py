@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import  UpdateView, DeleteView
 from .models import Jewelry, Cart
 import logging
 
@@ -47,3 +48,13 @@ class CartView(TemplateView):
                 {'quantity': i.quantity, 'item': Jewelry.objects.get(id=i.item_id)})
 
         return render(request, self.template_name, {'items': items})
+    
+class CartUpdate(UpdateView):
+    model = Cart
+    fields = ['id','name', 'img', 'category', 'desciption', 'price']
+    template_name = "cart_update.html"
+    
+class CartDelete(DeleteView):
+    model = Cart
+    template_name = "cart_delete_confirmation.html"
+    success_url = "/cart/"
