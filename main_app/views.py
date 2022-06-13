@@ -12,6 +12,8 @@ class Home(TemplateView):
         context = super().get_context_data(**kwargs)
         context['jewelrys'] = Jewelry.objects.all()
         return context
+    
+    
 
 
 class JewelryView(TemplateView):
