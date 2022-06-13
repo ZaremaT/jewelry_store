@@ -6,8 +6,10 @@
 
 <h1>Cart</h1>
 
+<h3>Total: ${{total}}</h3>
 {% for i in items %}
 <h3>{{i.item.name}}</h3>
+<h3>Price: $ {{i.item.price}}</h3>
 <h2 class="cart-quantity">Quantity: {{i.quantity}}
     <form method="post">
         {% csrf_token %}

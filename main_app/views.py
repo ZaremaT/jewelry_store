@@ -64,12 +64,15 @@ class CartView(TemplateView):
         if not request.user.is_authenticated:
             return render(request, self.template_name, {})
         item_ids = Cart.objects.filter(username=request.user.username)
+        total = 0
         items = []
         for i in item_ids:
+            j = Jewelry.objects.get(id=i.item_id)
             items.append(
-                {'quantity': i.quantity, 'item': Jewelry.objects.get(id=i.item_id)})
+                {'quantity': i.quantity, 'item': j})
+            total += j.price * i.quantity
 
-        return render(request, self.template_name, {'items': items, 'categories': Category.objects.all()})
+        return render(request, self.template_name, {'items': items, 'categories': Category.objects.all(), 'total': total})
     
     def post(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
@@ -86,7 +89,9 @@ class CartView(TemplateView):
         else:
             return render(request, self.template_name, {})
         id = request.POST[action]
+        total = 0
         for i in item_ids:
+            j = Jewelry.objects.get(id=i.item_id)
             if i.item_id == id:
                 if action == 'plus-cart':
                     i.quantity += 1
@@ -97,9 +102,11 @@ class CartView(TemplateView):
                     Cart.objects.filter(id=i.id).delete()
                 else:
                     Cart.objects.filter(id=i.id).update(quantity=i.quantity)
-                    items.append({'quantity': i.quantity, 'item': Jewelry.objects.get(id=i.item_id)})
+                    items.append({'quantity': i.quantity, 'item': j})
+                    total += j.price * i.quantity
             else:
-                items.append({'quantity': i.quantity, 'item': Jewelry.objects.get(id=i.item_id)})
+                items.append({'quantity': i.quantity, 'item': j})
+                total += j.price * i.quantity
         
         return render(request, self.template_name, {'items': items, 'categories': Category.objects.all()})
 
