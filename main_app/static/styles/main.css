@@ -56,10 +56,19 @@ description {
 }
 
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    justify-content: center;
-    gap: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0;
+    transition: all 500ms ease;
+}
+
+
+.gallery-container {
+    overflow: hidden;
+    position: relative;
+    width: 1000px;
+    margin: 0 auto;
 }
 
 .gallery .card {
