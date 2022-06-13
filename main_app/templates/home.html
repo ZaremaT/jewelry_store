@@ -4,11 +4,14 @@
 
 {% block content %}
 
-{% for j in jewelrys %}
-<h3>{{j.name}}</h3>
-<a href="/a/{{j.id}}">
-<img src ="{{j.img}}" alt="{{j.name}}" />
-</a>
-{% endfor %}
-
+<div class="index-items">
+  {% for j in jewelrys %}
+  <div class="index-item">
+    <h3>{{j.name}}</h3>
+    <a href="/a/{{j.id}}">
+      <img src="{{j.img}}" alt="{{j.name}}" />
+    </a>
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}

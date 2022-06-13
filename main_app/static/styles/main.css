@@ -27,11 +27,9 @@ h3 {
 }
 
 img {
-    height: 300px;
-    width: 300x;
     display: inline-block;
     height: 250px;
-    transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
 }
 
 img:hover {
@@ -119,4 +117,25 @@ body {
     color: black;
     text-decoration: none;
     border-right: 1px solid #fff; 
+}
+
+.index-items {
+    display: flex;
+}
+
+.index-item {
+    padding: 20px;
+}
+
+.greeting {
+    display: inline-flex;
+}
+
+.navbar {
+    text-align: center;
+}
+
+.navbar-nav {
+    display:inline-flex;
+    float: none;
 }
