@@ -1,10 +1,10 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
   path('', views.Home.as_view(), name="home"),
   path('a/<int:jewelry_id>/', views.JewelryView.as_view(), name="jewelry"),
-  path('cart/<inbt:pk>/', views.CartView.as_view(), name="cart"),
-  path('cart/<int:pk>/update',views.CartUpdate.as_view(), name="cart_update"),
-  path('cart/<int:pk>/delete',views.CartDelete.as_view(), name="cart_delete"),
+  path('cart/', views.CartView.as_view(), name="cart"),
+  re_path(r'^signup/$', views.signup, name='signup'),
+  path('<slug:category>/', views.Home.as_view(), name="home"),
 ]

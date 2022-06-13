@@ -3,16 +3,10 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
-{% endif %}
 
 {% for j in jewelrys %}
 <h3>{{j.name}}</h3>
-<a href="a/{{j.id}}">
+<a href="/a/{{j.id}}">
 <img src ="{{j.img}}" alt="{{j.name}}" />
 </a>
 {% endfor %}

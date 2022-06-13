@@ -4,20 +4,22 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
-{% endif %}
-
 <h1>Cart</h1>
 
 {% for i in items %}
 <h3>{{i.item.name}}</h3>
-<h2>Quantity: {{i.quantity}}</h2>
+<h2 class="cart-quantity">Quantity: {{i.quantity}}
+    <form method="post">
+        {% csrf_token %}
+        <button class="button change-quantity" name="plus-cart" value="{{i.item.id}}">+</button>
+    </form>
+    <form method="post">
+        {% csrf_token %}
+        <button class="button change-quantity" name="minus-cart" value="{{i.item.id}}">-</button>
+    </form>
+</h2>
 <a href="/a/{{i.item.id}}">
-<img src ="{{i.item.img}}" alt="{{i.item.name}}" />
+    <img src="{{i.item.img}}" alt="{{i.item.name}}" />
 </a>
 {% endfor %}
 
