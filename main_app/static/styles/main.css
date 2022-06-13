@@ -120,7 +120,8 @@ body {
 }
 
 .index-items {
-    display: flex;
+    display: -webkit-inline-box;
+    flex-flow: wrap;
 }
 
 .index-item {
